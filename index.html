@@ -81,7 +81,118 @@ function renderWeekly(){const days=dayRangeOffset(selectedDate,weekOffset),from=
 function dayRangeOffset(date,offset){const base=dayRange(date);if(!offset)return base;return base.map(d=>{const x=dateObj(d);x.setDate(x.getDate()+offset*7);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`})}
 function render(){const main=document.getElementById('main');main.innerHTML=currentTab==='today'?renderToday():currentTab==='meals'?renderMeals():currentTab==='weight'?renderWeight():renderWeekly();document.querySelectorAll('.bottomnav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===currentTab));}
 function openModal(title,body,onSubmit){const root=document.getElementById('modalRoot');root.innerHTML=`<div class="modal-backdrop" id="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-top"><h3>${esc(title)}</h3><button class="iconbtn" type="button" id="closeModal" aria-label="Close">✕</button></div>${body}</div></div>`;const close=()=>root.innerHTML='';document.getElementById('closeModal').onclick=close;document.getElementById('backdrop').addEventListener('click',e=>{if(e.target.id==='backdrop')close()});const form=root.querySelector('form');if(form)form.addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(form);try{const result=await onSubmit(Object.fromEntries(fd.entries()));if(result!==false){close();render()}}catch(err){toast('Something went wrong. Please try again.')}})}
-function mealForm(id=null){const m=id?data.meals.find(x=>x.id===id):null;editingMealId=id;openModal(m?'Edit meal':'Add a meal',`<form id="mealForm"><div class="formgrid"><div class="full"><label class="field-label">Meal name *</label><input name="name" required maxlength="100" placeholder="e.g. Oats with milk" value="${esc(m?.name||'')}"></div><div><label class="field-label">Meal type</label><select name="type">${['Breakfast','Lunch','Dinner','Snack'].map(t=>`<option ${m?.type===t?'selected':''}>${t}</option>`).join('')}</select></div><div><label class="field-label">Date *</label><input name="date" type="date" required value="${m?.date||selectedDate}"></div><div><label class="field-label">Calories (kcal) *</label><input name="calories" type="number" required min="0" max="50000" step="1" value="${m?.calories??''}" placeholder="e.g. 350"></div><div><label class="field-label">Protein (g)</label><input name="protein" type="number" min="0" step=".1" value="${m?.protein??''}" placeholder="Optional"></div><div><label class="field-label">Carbs (g)</label><input name="carbs" type="number" min="0" step=".1" value="${m?.carbs??''}" placeholder="Optional"></div><div><label class="field-label">Fat (g)</label><input name="fat" type="number" min="0" step=".1" value="${m?.fat??''}" placeholder="Optional"></div></div><div class="actions"><button class="btn ghost" type="button" id="cancelMeal">Cancel</button><button class="btn" type="submit">Save meal</button></div></form>`,v=>{const entry={id:m?.id||uid(),name:v.name.trim(),type:v.type,date:v.date,calories:Number(v.calories),protein:Number(v.protein||0),carbs:Number(v.carbs||0),fat:Number(v.fat||0),created:m?.created||Date.now()};if(!entry.name||!entry.date||!Number.isFinite(entry.calories)||entry.calories<0){toast('Please check the meal details.');return false}if(m)data.meals=data.meals.map(x=>x.id===id?entry:x);else data.meals.push(entry);selectedDate=entry.date;save();toast(m?'Meal updated':'Meal added');return true});const c=document.getElementById('cancelMeal');if(c)c.onclick=()=>document.getElementById('modalRoot').innerHTML=''}
+const FOOD_DB = [
+ {name:"Oats (plain, dry)",kcal:389,p:16.9,c:66.3,f:6.9},
+ {name:"Protein oats (label estimate)",kcal:390,p:20,c:60,f:8},
+ {name:"Whole egg",kcal:143,p:12.6,c:0.7,f:9.5},
+ {name:"Egg white",kcal:52,p:10.9,c:0.7,f:0.2},
+ {name:"Banana",kcal:89,p:1.1,c:22.8,f:0.3},
+ {name:"Apple",kcal:52,p:0.3,c:13.8,f:0.2},
+ {name:"Milk (whole)",kcal:61,p:3.2,c:4.8,f:3.3},
+ {name:"Curd (plain)",kcal:61,p:3.5,c:4.7,f:3.3},
+ {name:"Paneer",kcal:265,p:18.3,c:1.2,f:20.8},
+ {name:"Chicken breast (raw)",kcal:120,p:22.5,c:0,f:2.6},
+ {name:"White rice (cooked)",kcal:130,p:2.7,c:28.2,f:0.3},
+ {name:"Dal (cooked, average)",kcal:116,p:7.5,c:20,f:0.8},
+ {name:"Rajma (cooked)",kcal:127,p:8.7,c:22.8,f:0.5},
+ {name:"Roti (plain, medium)",kcal:120,p:3.5,c:22,f:2.5},
+ {name:"Poha (cooked, average)",kcal:170,p:3.5,c:25,f:6},
+ {name:"Potato (boiled)",kcal:87,p:1.9,c:20.1,f:0.1},
+ {name:"Peanut butter",kcal:588,p:25,c:20,f:50},
+ {name:"Roasted chana",kcal:369,p:22,c:58,f:6},
+ {name:"Almonds",kcal:579,p:21.2,c:21.6,f:49.9},
+ {name:"Pumpkin seeds",kcal:559,p:30.2,c:10.7,f:49.1},
+ {name:"Whey/protein powder (generic estimate)",kcal:400,p:80,c:8,f:6},
+ {name:"Sugar",kcal:387,p:0,c:100,f:0},
+ {name:"Cooking oil",kcal:884,p:0,c:0,f:100}
+];
+function mealForm(id=null){
+ const m=id?data.meals.find(x=>x.id===id):null;
+ editingMealId=id;
+ let ingredients=[];
+ if(m && Array.isArray(m.ingredients)) ingredients=m.ingredients.map(x=>({...x}));
+ const foodsHtml=FOOD_DB.map((f,i)=>`<option value="${i}">${esc(f.name)}</option>`).join("");
+ openModal(m?'Edit meal':'Build a meal',`<form id="mealForm">
+ <div class="formgrid">
+  <div class="full"><label class="field-label">Meal name *</label><input name="name" id="mealName" required maxlength="100" placeholder="e.g. Oats with milk" value="${esc(m?.name||'')}"></div>
+  <div><label class="field-label">Meal type</label><select name="type">${['Breakfast','Lunch','Dinner','Snack'].map(t=>`<option ${m?.type===t?'selected':''}>${t}</option>`).join('')}</select></div>
+  <div><label class="field-label">Date *</label><input name="date" type="date" required value="${m?.date||selectedDate}"></div>
+ </div>
+ <div class="card" style="margin-top:14px;box-shadow:none">
+  <strong>Find food and add ingredients</strong>
+  <div class="inline-note">Choose a food, enter the amount in grams, then add it. Nutrition is estimated from the database and can vary by brand and recipe.</div>
+  <div class="formgrid" style="margin-top:12px">
+   <div class="full"><label class="field-label" for="foodSearch">Search foods</label><input id="foodSearch" placeholder="Search oats, egg, rice, chicken…" autocomplete="off"></div>
+   <div class="full"><label class="field-label" for="foodSelect">Food</label><select id="foodSelect">${foodsHtml}</select></div>
+   <div><label class="field-label" for="foodGrams">Amount (g)</label><input id="foodGrams" type="number" min="0.1" step="0.1" value="100"></div>
+   <div style="display:flex;align-items:end"><button class="btn secondary" type="button" id="addIngredient" style="width:100%">＋ Add ingredient</button></div>
+  </div>
+  <div id="ingredientList" style="margin-top:12px"></div>
+  <div class="notice">For eggs or rotis, grams give the most consistent estimate. Use the food label when you have one.</div>
+ </div>
+ <div class="grid stats" style="margin-top:12px">
+  <div class="stat"><div class="label">Calories</div><div class="value" id="totalKcal">0</div><div class="sub">kcal</div></div>
+  <div class="stat"><div class="label">Protein</div><div class="value" id="totalProtein">0</div><div class="sub">grams</div></div>
+  <div class="stat"><div class="label">Carbs</div><div class="value" id="totalCarbs">0</div><div class="sub">grams</div></div>
+  <div class="stat"><div class="label">Fat</div><div class="value" id="totalFat">0</div><div class="sub">grams</div></div>
+ </div>
+ <details style="margin-top:12px"><summary class="muted">Or enter nutrition manually</summary>
+  <div class="formgrid" style="margin-top:10px">
+   <div><label class="field-label">Calories (kcal)</label><input name="calories" id="manualCalories" type="number" min="0" step="1" value="${m?.calories??''}" placeholder="kcal"></div>
+   <div><label class="field-label">Protein (g)</label><input name="protein" id="manualProtein" type="number" min="0" step=".1" value="${m?.protein??''}" placeholder="Optional"></div>
+   <div><label class="field-label">Carbs (g)</label><input name="carbs" id="manualCarbs" type="number" min="0" step=".1" value="${m?.carbs??''}" placeholder="Optional"></div>
+   <div><label class="field-label">Fat (g)</label><input name="fat" id="manualFat" type="number" min="0" step=".1" value="${m?.fat??''}" placeholder="Optional"></div>
+  </div>
+ </details>
+ <div class="actions"><button class="btn ghost" type="button" id="cancelMeal">Cancel</button><button class="btn" type="submit">Save meal</button></div>
+ </form>`,v=>{
+  const total=ingredients.reduce((a,x)=>({calories:a.calories+x.calories,protein:a.protein+x.protein,carbs:a.carbs+x.carbs,fat:a.fat+x.fat}),{calories:0,protein:0,carbs:0,fat:0});
+  const hasIngredients=ingredients.length>0;
+  const entry={id:m?.id||uid(),name:v.name.trim(),type:v.type,date:v.date,
+   calories:Math.round(hasIngredients?total.calories:Number(v.calories||0)),
+   protein:Number((hasIngredients?total.protein:Number(v.protein||0)).toFixed(1)),
+   carbs:Number((hasIngredients?total.carbs:Number(v.carbs||0)).toFixed(1)),
+   fat:Number((hasIngredients?total.fat:Number(v.fat||0)).toFixed(1)),
+   ingredients:hasIngredients?ingredients:undefined,created:m?.created||Date.now()};
+  if(!entry.name||!entry.date||!Number.isFinite(entry.calories)||entry.calories<0){toast('Enter a meal name and valid nutrition details.');return false}
+  if(!hasIngredients && v.calories===''){toast('Add an ingredient or enter calories manually.');return false}
+  if(m)data.meals=data.meals.map(x=>x.id===id?entry:x);else data.meals.push(entry);
+  selectedDate=entry.date;save();toast(m?'Meal updated':'Meal added');return true
+ });
+ const root=document.getElementById('modalRoot');
+ const search=root.querySelector('#foodSearch'), select=root.querySelector('#foodSelect'), grams=root.querySelector('#foodGrams');
+ function renderIngredients(){
+  const totals=ingredients.reduce((a,x)=>({calories:a.calories+x.calories,protein:a.protein+x.protein,carbs:a.carbs+x.carbs,fat:a.fat+x.fat}),{calories:0,protein:0,carbs:0,fat:0});
+  root.querySelector('#ingredientList').innerHTML=ingredients.length?ingredients.map((x,i)=>`<div class="meal" style="margin-bottom:7px"><div class="meal-main"><strong>${esc(x.name)}</strong><div class="meta">${num(x.grams,1)} g · ${num(x.calories)} kcal · P ${num(x.protein,1)}g · C ${num(x.carbs,1)}g · F ${num(x.fat,1)}g</div></div><button class="textbtn" type="button" data-remove-ingredient="${i}">Remove</button></div>`).join(''):empty('No ingredients added yet.');
+  root.querySelector('#totalKcal').textContent=num(Math.round(totals.calories));
+  root.querySelector('#totalProtein').textContent=num(totals.protein,1);
+  root.querySelector('#totalCarbs').textContent=num(totals.carbs,1);
+  root.querySelector('#totalFat').textContent=num(totals.fat,1);
+  ['Calories','Protein','Carbs','Fat'].forEach((label,i)=>{const id=['manualCalories','manualProtein','manualCarbs','manualFat'][i];const el=root.querySelector('#'+id);if(el)el.value= i===0?Math.round(totals.calories):totals[['protein','carbs','fat'][i-1]].toFixed(1)});
+ }
+ function refreshFoodOptions(){
+  const q=search.value.trim().toLowerCase();
+  const filtered=FOOD_DB.map((f,i)=>({f,i})).filter(x=>x.f.name.toLowerCase().includes(q));
+  select.innerHTML=filtered.map(x=>`<option value="${x.i}">${esc(x.f.name)}</option>`).join("");
+  if(!filtered.length)select.innerHTML='<option value="">No matching foods</option>';
+ }
+ search.addEventListener('input',refreshFoodOptions);
+ root.querySelector('#addIngredient').onclick=()=>{
+  const idx=Number(select.value), amount=Number(grams.value);
+  if(!Number.isInteger(idx)||!FOOD_DB[idx]||!Number.isFinite(amount)||amount<=0){toast('Choose a food and enter grams greater than zero.');return}
+  const f=FOOD_DB[idx], factor=amount/100;
+  ingredients.push({name:f.name,grams:amount,calories:f.kcal*factor,protein:f.p*factor,carbs:f.c*factor,fat:f.f*factor});
+  if(!root.querySelector('#mealName').value)root.querySelector('#mealName').value=f.name;
+  renderIngredients();
+ };
+ root.querySelector('#ingredientList').addEventListener('click',e=>{
+  const b=e.target.closest('[data-remove-ingredient]');
+  if(b){ingredients.splice(Number(b.dataset.removeIngredient),1);renderIngredients()}
+ });
+ root.querySelector('#cancelMeal').onclick=()=>root.innerHTML='';
+ if(ingredients.length)renderIngredients();
+ else if(m){ /* Existing legacy entries remain editable without forcing ingredient conversion. */ }
+}
 function activityForm(){const a=activityOn(selectedDate);openModal('Daily activity',`<form><div class="formgrid"><div><label class="field-label">Calories burned (kcal)</label><input name="burned" type="number" min="0" max="50000" step="1" value="${esc(a.burned||0)}"></div><div><label class="field-label">Steps (optional)</label><input name="steps" type="number" min="0" max="200000" step="1" value="${esc(a.steps||'')}"></div><div class="full"><label class="field-label">Activity notes</label><textarea name="notes" rows="3" maxlength="500" placeholder="e.g. Chest workout, 15 min incline treadmill">${esc(a.notes||'')}</textarea></div></div><div class="actions"><button class="btn ghost" type="button" id="cancelActivity">Cancel</button><button class="btn">Save activity</button></div></form>`,v=>{data.activities=data.activities.filter(x=>x.date!==selectedDate);data.activities.push({date:selectedDate,burned:Number(v.burned||0),steps:v.steps===''?'':Number(v.steps),notes:v.notes.trim()});save();toast('Activity saved')});document.getElementById('cancelActivity').onclick=()=>document.getElementById('modalRoot').innerHTML=''}
 function saveWeight(){const input=document.getElementById('weightValue');if(!input)return;const v=input.value;if(v===''||!Number.isFinite(Number(v))||Number(v)<20||Number(v)>500){toast('Enter a valid weight in kg.');return}data.weights=data.weights.filter(x=>x.date!==selectedDate);data.weights.push({date:selectedDate,kg:Number(Number(v).toFixed(2))});data.weights.sort((a,b)=>a.date.localeCompare(b.date));if(data.settings.startWeight===null||data.settings.startWeight==='')data.settings.startWeight=Number(Number(v).toFixed(2));save();toast('Weight saved');render()}
 function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
