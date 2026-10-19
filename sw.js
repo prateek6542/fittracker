@@ -1,4 +1,4 @@
-const CACHE_NAME = "fittrack-pwa-v3-phase2";
+const CACHE_NAME = "fittrack-pwa-v6-dark-dashboard";
 const CORE_FILES = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting()));

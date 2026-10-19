@@ -21,7 +21,7 @@ You can double-click `index.html` to preview most features. Browser restrictions
 7. Wait for GitHub Pages to publish the site. Open the URL shown in Pages settings (usually `https://YOUR-USERNAME.github.io/fittrack/`).
 8. Open that URL in Chrome on Android, let the page load once while online, then open Chrome's menu and choose **Install app** or **Add to Home screen**.
 9. Open FitTrack once while online so the service worker can cache the app. Then test airplane mode.
-10. Export a JSON backup regularly from Today → Export JSON.
+10. Export a JSON backup regularly from Settings → Export JSON.
 
 ## Use on Android
 - Chrome is the simplest option.
@@ -43,3 +43,6 @@ You can double-click `index.html` to preview most features. Browser restrictions
 - No cloud sync, account login, reminders, photo logging, barcode lookup or automatic wearable integration.
 - The manifest has no custom app icon yet; browsers may use a generic icon.
 - CSV export combines meals, weights and activity into one file with a `record_type` column.
+
+## Dashboard redesign
+The modern dark dashboard uses the existing `fittrack-data-v1` localStorage key and existing meals, weights, activities and settings arrays. The dashboard is a visual/interface update; it does not clear local data. New settings for protein and step goals are added compatibly with defaults. Before deploying, review the package and test on a copy or test browser profile.

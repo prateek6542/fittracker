@@ -1,0 +1,200 @@
+[
+  {
+    "name": "Oats - Dr Choice High Protein",
+    "basis": "Dry / 100 g",
+    "kcal": 354,
+    "p": 24.34,
+    "c": 49.52,
+    "f": 7.34,
+    "fiber": 8.78,
+    "status": "Label-derived",
+    "notes": "From user-provided 50 g label values doubled."
+  },
+  {
+    "name": "Whole egg",
+    "basis": "Raw edible / 100 g",
+    "kcal": 143,
+    "p": 12.6,
+    "c": 0.7,
+    "f": 9.5,
+    "fiber": 0,
+    "status": "Reference estimate",
+    "notes": "No shell."
+  },
+  {
+    "name": "Egg white",
+    "basis": "Raw / 100 g",
+    "kcal": 52,
+    "p": 10.9,
+    "c": 0.7,
+    "f": 0.2,
+    "fiber": 0,
+    "status": "Reference estimate",
+    "notes": null
+  },
+  {
+    "name": "Bonn brown bread",
+    "basis": "As sold / 100 g",
+    "kcal": 271,
+    "p": 7.8,
+    "c": 49.68,
+    "f": 1.76,
+    "fiber": 7.25,
+    "status": "Online listing range midpoint",
+    "notes": "Based on user-provided online ranges: kcal 264-278, protein 7.7-7.9 g, fat 1.57-1.95 g, fibre 6.10-8.4 g. Midpoints used consistently; packet label can supersede these values."
+  },
+  {
+    "name": "Banana",
+    "basis": "Peeled edible / 100 g",
+    "kcal": 89,
+    "p": 1.1,
+    "c": 22.8,
+    "f": 0.3,
+    "fiber": 2.6,
+    "status": "Reference estimate",
+    "notes": null
+  },
+  {
+    "name": "Whole cow milk (generic)",
+    "basis": "Per 100 ml (approx. 100 g)",
+    "kcal": 73,
+    "p": 3.26,
+    "c": 4.94,
+    "f": 4.48,
+    "fiber": 0,
+    "status": "IFCT 2017 reference",
+    "notes": "Generic whole cow milk reference: IFCT 2017 reports per 100 g; adapted approximately to 100 ml. Actual milk varies by animal and fat content."
+  },
+  {
+    "name": "Paneer (generic, homemade estimate)",
+    "basis": "As prepared / 100 g",
+    "kcal": 305,
+    "p": 18.86,
+    "c": 2.41,
+    "f": 24.78,
+    "fiber": 0,
+    "status": "IFCT 2017 reference",
+    "notes": "Generic paneer reference from Indian Food Composition Tables 2017; homemade paneer varies with milk fat, yield and whey drainage."
+  },
+  {
+    "name": "White rice",
+    "basis": "Cooked / 100 g",
+    "kcal": 130,
+    "p": 2.7,
+    "c": 28.2,
+    "f": 0.3,
+    "fiber": 0.4,
+    "status": "Reference estimate",
+    "notes": "Plain, no oil; cooked water content affects values."
+  },
+  {
+    "name": "Malka dal",
+    "basis": "Cooked / 100 g",
+    "kcal": 116,
+    "p": 7.5,
+    "c": 20,
+    "f": 0.4,
+    "fiber": 7,
+    "status": "Provisional recipe estimate",
+    "notes": "Plain cooked, no oil; tadka/oil changes values."
+  },
+  {
+    "name": "Rajma curry",
+    "basis": "Cooked / 100 g",
+    "kcal": 127,
+    "p": 8,
+    "c": 22,
+    "f": 1.5,
+    "fiber": 6.4,
+    "status": "Provisional recipe estimate",
+    "notes": "Modest gravy/oil; recipe-dependent."
+  },
+  {
+    "name": "Roti",
+    "basis": "Cooked / 100 g",
+    "kcal": 300,
+    "p": 9,
+    "c": 55,
+    "f": 5,
+    "fiber": 8,
+    "status": "Provisional estimate",
+    "notes": "Better: track atta grams and oil/ghee separately."
+  },
+  {
+    "name": "Chicken breast",
+    "basis": "Raw skinless / 100 g",
+    "kcal": 120,
+    "p": 22.5,
+    "c": 0,
+    "f": 2.6,
+    "fiber": 0,
+    "status": "Reference estimate",
+    "notes": "User's preferred raw weight."
+  },
+  {
+    "name": "Plain curd",
+    "basis": "Per 100 g",
+    "kcal": 61,
+    "p": 3.5,
+    "c": 4.7,
+    "f": 3.3,
+    "fiber": 0,
+    "status": "Provisional estimate",
+    "notes": "Regular whole-milk curd."
+  },
+  {
+    "name": "Poha",
+    "basis": "Cooked / 100 g",
+    "kcal": 130,
+    "p": 2.5,
+    "c": 25,
+    "f": 2.5,
+    "fiber": 1.5,
+    "status": "Provisional recipe estimate",
+    "notes": "Oil, peanuts, potatoes and water change values."
+  },
+  {
+    "name": "Soya chunks",
+    "basis": "Dry / 100 g",
+    "kcal": 345,
+    "p": 52,
+    "c": 33,
+    "f": 0.5,
+    "fiber": 13,
+    "status": "Reference estimate",
+    "notes": "Generic; brand label preferred."
+  },
+  {
+    "name": "Yes Protein powder",
+    "basis": "As sold / 100 g",
+    "kcal": 399.5,
+    "p": 68.69,
+    "c": 18.81,
+    "f": 5.5,
+    "fiber": 5.51,
+    "status": "Label-derived",
+    "notes": "Latest user-provided label, per 100 g column. Per 35 g serving: 139.83 kcal, protein 24.04 g, carbs 6.58 g, fat 1.93 g, fibre 1.93 g."
+  },
+  {
+    "name": "Amul diced mozzarella",
+    "basis": "As sold / 100 g",
+    "kcal": 289,
+    "p": 23,
+    "c": 2,
+    "f": 21,
+    "fiber": null,
+    "status": "Label-derived",
+    "notes": "User-provided label; fiber not listed."
+  },
+  {
+    "name": "Pomegranate arils",
+    "basis": "Edible / 100 g",
+    "kcal": 83,
+    "p": 1.7,
+    "c": 18.7,
+    "f": 1.2,
+    "fiber": 4,
+    "status": "Reference estimate",
+    "notes": null
+  }
+]
