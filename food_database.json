@@ -1,200 +1,663 @@
 [
   {
-    "name": "Oats - Dr Choice High Protein",
-    "basis": "Dry / 100 g",
-    "kcal": 354,
-    "p": 24.34,
-    "c": 49.52,
-    "f": 7.34,
-    "fiber": 8.78,
-    "status": "Label-derived",
-    "notes": "From user-provided 50 g label values doubled."
+    "name": "High-protein oats",
+    "brand": "Pintola High Protein Oats",
+    "basis": "Dry, as sold",
+    "kcal": 392,
+    "p": 26,
+    "c": 54.6,
+    "f": 7.8,
+    "fiber": 9.6,
+    "status": "Label-verified",
+    "notes": "From user-provided label image.",
+    "keywords": [
+      "high protein oats",
+      "high-protein oats",
+      "pintola high protein oats",
+      "pintola oats",
+      "protein oats",
+      "high protein oatmeal",
+      "oats"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Protein powder",
+    "brand": "Naturaltine Yes Protein",
+    "basis": "Powder, as sold",
+    "kcal": 399.5,
+    "p": 68.69,
+    "c": 18.81,
+    "f": 5.5,
+    "fiber": 5.51,
+    "status": "Label-verified",
+    "notes": "Label per 100 g; serving listed as 35 g.",
+    "keywords": [
+      "protein powder",
+      "naturaltine yes protein",
+      "yes protein",
+      "yes protein powder",
+      "naturaltine protein",
+      "protein supplement powder"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Peanut butter",
+    "brand": "Beast Life",
+    "basis": "As sold",
+    "kcal": 585.5,
+    "p": 24.5,
+    "c": 16,
+    "f": 43.5,
+    "fiber": 6.5,
+    "status": "Label-verified",
+    "notes": "From user-provided label image.",
+    "keywords": [
+      "peanut butter",
+      "beast life peanut butter",
+      "beastlife peanut butter",
+      "beast life",
+      "peanut spread"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Cheese",
+    "brand": "Amul cheese (variant to confirm)",
+    "basis": "As sold",
+    "kcal": 289,
+    "p": 23,
+    "c": 2,
+    "f": 21,
+    "fiber": null,
+    "status": "Label-verified except fibre",
+    "notes": "Fibre not shown on label.",
+    "keywords": [
+      "amul cheese",
+      "amul cheese slices",
+      "cheese",
+      "cheese cubes",
+      "amul cheese variant"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Pasta",
+    "brand": "Brand/variant to confirm",
+    "basis": "Dry, uncooked",
+    "kcal": 357,
+    "p": 11,
+    "c": 78,
+    "f": 1.8,
+    "fiber": 3,
+    "status": "Label photo supplied; product identity to confirm",
+    "notes": "Use for dry weight; confirm label belongs to current pasta.",
+    "keywords": [
+      "pasta",
+      "dry pasta",
+      "uncooked pasta",
+      "pasta dry",
+      "macaroni"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Bread",
+    "brand": "Bonn (variant to confirm)",
+    "basis": "As sold",
+    "kcal": 248,
+    "p": 7.8,
+    "c": 48,
+    "f": 1.7,
+    "fiber": 5,
+    "status": "Confirmed by user; label-based",
+    "notes": "User confirmed this is the exact Bonn bread they eat.",
+    "keywords": [
+      "bonn bread",
+      "bonn brown bread",
+      "bonn bread brown",
+      "bread",
+      "brown bread",
+      "bread slice",
+      "bread slices",
+      "bonn"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Oats, plain",
+    "brand": "Generic",
+    "basis": "Dry",
+    "kcal": 389,
+    "p": 16.9,
+    "c": 66.3,
+    "f": 6.9,
+    "fiber": 10.6,
+    "status": "Reference estimate",
+    "notes": "Use package label if available.",
+    "keywords": [
+      "plain oats",
+      "regular oats",
+      "rolled oats",
+      "plain oatmeal",
+      "oatmeal",
+      "generic oats",
+      "oats"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Pumpkin seeds",
+    "brand": "Generic",
+    "basis": "Dry kernels",
+    "kcal": 559,
+    "p": 30.2,
+    "c": 10.7,
+    "f": 49.1,
+    "fiber": 6,
+    "status": "Reference estimate",
+    "notes": "Brand/roast may vary.",
+    "keywords": [
+      "pumpkin seeds",
+      "pumpkin seed",
+      "pepitas"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Almonds",
+    "brand": "Generic",
+    "basis": "Raw",
+    "kcal": 579,
+    "p": 21.2,
+    "c": 21.6,
+    "f": 49.9,
+    "fiber": 12.5,
+    "status": "Reference estimate",
+    "notes": "Whole almonds.",
+    "keywords": [
+      "almonds",
+      "almond",
+      "badam"
+    ],
+    "needsRecipe": false
   },
   {
     "name": "Whole egg",
-    "basis": "Raw edible / 100 g",
+    "brand": "Generic",
+    "basis": "Raw edible portion",
     "kcal": 143,
     "p": 12.6,
     "c": 0.7,
     "f": 9.5,
     "fiber": 0,
     "status": "Reference estimate",
-    "notes": "No shell."
+    "notes": "Egg size affects per-egg values.",
+    "keywords": [
+      "whole egg",
+      "whole eggs",
+      "egg",
+      "eggs",
+      "boiled egg",
+      "boiled eggs"
+    ],
+    "needsRecipe": false
   },
   {
     "name": "Egg white",
-    "basis": "Raw / 100 g",
+    "brand": "Generic",
+    "basis": "Raw",
     "kcal": 52,
     "p": 10.9,
     "c": 0.7,
     "f": 0.2,
     "fiber": 0,
     "status": "Reference estimate",
-    "notes": null
-  },
-  {
-    "name": "Bonn brown bread",
-    "basis": "As sold / 100 g",
-    "kcal": 271,
-    "p": 7.8,
-    "c": 49.68,
-    "f": 1.76,
-    "fiber": 7.25,
-    "status": "Online listing range midpoint",
-    "notes": "Based on user-provided online ranges: kcal 264-278, protein 7.7-7.9 g, fat 1.57-1.95 g, fibre 6.10-8.4 g. Midpoints used consistently; packet label can supersede these values."
+    "notes": null,
+    "keywords": [
+      "egg white",
+      "egg whites",
+      "egg white only",
+      "egg whites only"
+    ],
+    "needsRecipe": false
   },
   {
     "name": "Banana",
-    "basis": "Peeled edible / 100 g",
+    "brand": "Generic",
+    "basis": "Raw edible portion",
     "kcal": 89,
     "p": 1.1,
     "c": 22.8,
     "f": 0.3,
     "fiber": 2.6,
     "status": "Reference estimate",
-    "notes": null
+    "notes": "Edible portion.",
+    "keywords": [
+      "banana",
+      "bananas",
+      "kela"
+    ],
+    "needsRecipe": false
   },
   {
-    "name": "Whole cow milk (generic)",
-    "basis": "Per 100 ml (approx. 100 g)",
-    "kcal": 73,
-    "p": 3.26,
-    "c": 4.94,
-    "f": 4.48,
-    "fiber": 0,
-    "status": "IFCT 2017 reference",
-    "notes": "Generic whole cow milk reference: IFCT 2017 reports per 100 g; adapted approximately to 100 ml. Actual milk varies by animal and fat content."
+    "name": "Potato",
+    "brand": "Generic",
+    "basis": "Boiled, no added fat",
+    "kcal": 87,
+    "p": 1.9,
+    "c": 20.1,
+    "f": 0.1,
+    "fiber": 1.8,
+    "status": "Reference estimate",
+    "notes": "Raw potato differs.",
+    "keywords": [
+      "potato",
+      "potatoes",
+      "boiled potato",
+      "boiled potatoes",
+      "aloo"
+    ],
+    "needsRecipe": false
   },
   {
-    "name": "Paneer (generic, homemade estimate)",
-    "basis": "As prepared / 100 g",
-    "kcal": 305,
-    "p": 18.86,
-    "c": 2.41,
-    "f": 24.78,
-    "fiber": 0,
-    "status": "IFCT 2017 reference",
-    "notes": "Generic paneer reference from Indian Food Composition Tables 2017; homemade paneer varies with milk fat, yield and whey drainage."
-  },
-  {
-    "name": "White rice",
-    "basis": "Cooked / 100 g",
+    "name": "Rice, white",
+    "brand": "Generic",
+    "basis": "Cooked",
     "kcal": 130,
     "p": 2.7,
     "c": 28.2,
     "f": 0.3,
     "fiber": 0.4,
     "status": "Reference estimate",
-    "notes": "Plain, no oil; cooked water content affects values."
-  },
-  {
-    "name": "Malka dal",
-    "basis": "Cooked / 100 g",
-    "kcal": 116,
-    "p": 7.5,
-    "c": 20,
-    "f": 0.4,
-    "fiber": 7,
-    "status": "Provisional recipe estimate",
-    "notes": "Plain cooked, no oil; tadka/oil changes values."
-  },
-  {
-    "name": "Rajma curry",
-    "basis": "Cooked / 100 g",
-    "kcal": 127,
-    "p": 8,
-    "c": 22,
-    "f": 1.5,
-    "fiber": 6.4,
-    "status": "Provisional recipe estimate",
-    "notes": "Modest gravy/oil; recipe-dependent."
-  },
-  {
-    "name": "Roti",
-    "basis": "Cooked / 100 g",
-    "kcal": 300,
-    "p": 9,
-    "c": 55,
-    "f": 5,
-    "fiber": 8,
-    "status": "Provisional estimate",
-    "notes": "Better: track atta grams and oil/ghee separately."
+    "notes": "User logs cooked weight; water absorption varies.",
+    "keywords": [
+      "white rice",
+      "cooked rice",
+      "plain rice",
+      "steamed rice",
+      "rice",
+      "chawal"
+    ],
+    "needsRecipe": false
   },
   {
     "name": "Chicken breast",
-    "basis": "Raw skinless / 100 g",
+    "brand": "Generic",
+    "basis": "Raw, skinless",
     "kcal": 120,
     "p": 22.5,
     "c": 0,
     "f": 2.6,
     "fiber": 0,
     "status": "Reference estimate",
-    "notes": "User's preferred raw weight."
+    "notes": "User weighs chicken raw.",
+    "keywords": [
+      "chicken breast",
+      "raw chicken breast",
+      "skinless chicken breast",
+      "chicken breast raw",
+      "chicken"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Atta / wheat flour",
+    "brand": "Generic whole-wheat atta",
+    "basis": "Dry ingredient",
+    "kcal": 340,
+    "p": 13.2,
+    "c": 72,
+    "f": 2.5,
+    "fiber": 10.7,
+    "status": "Reference estimate",
+    "notes": "For roti, use grams of atta and added fat.",
+    "keywords": [
+      "atta",
+      "wheat flour",
+      "whole wheat flour",
+      "chapati flour",
+      "roti flour",
+      "gehun atta"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Moong dal",
+    "brand": "Homemade",
+    "basis": "Cooked, recipe-dependent",
+    "kcal": 110,
+    "p": 7,
+    "c": 18.5,
+    "f": 1.5,
+    "fiber": 6,
+    "status": "Household recipe estimate",
+    "notes": "Assumes 10–15 g oil in a pot shared by 4–5 people; estimated per 100 g cooked serving. Actual water content and portion yield affect values.",
+    "keywords": [
+      "moong dal",
+      "mung dal",
+      "green gram dal",
+      "yellow moong dal",
+      "cooked moong dal",
+      "dal",
+      "daal"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Malka dal",
+    "brand": "Homemade",
+    "basis": "Cooked, recipe-dependent",
+    "kcal": 115,
+    "p": 7.5,
+    "c": 19,
+    "f": 1.5,
+    "fiber": 5.5,
+    "status": "Household recipe estimate",
+    "notes": "Assumes 10–15 g oil in a pot shared by 4–5 people; estimated per 100 g cooked serving. Actual water content and portion yield affect values.",
+    "keywords": [
+      "malka dal",
+      "masoor dal",
+      "red lentils",
+      "cooked masoor dal",
+      "lentils",
+      "dal",
+      "daal"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Rajma",
+    "brand": "Homemade",
+    "basis": "Cooked curry",
+    "kcal": 125,
+    "p": 7,
+    "c": 20,
+    "f": 2,
+    "fiber": 6,
+    "status": "Household recipe estimate",
+    "notes": "Assumes 10–15 g oil in a pot shared by 4–5 people; estimated per 100 g cooked curry. Gravy and water content affect values.",
+    "keywords": [
+      "rajma",
+      "rajma curry",
+      "kidney beans curry",
+      "red kidney beans curry"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Paneer",
+    "brand": "Generic household full-fat paneer",
+    "basis": "As eaten",
+    "kcal": 265,
+    "p": 18.3,
+    "c": 1.2,
+    "f": 20.8,
+    "fiber": 0,
+    "status": "Generic reference estimate",
+    "notes": "Household full-fat paneer estimate; homemade values depend on milk fat and moisture.",
+    "keywords": [
+      "paneer",
+      "homemade paneer",
+      "full fat paneer",
+      "full-fat paneer",
+      "cottage cheese"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Milk",
+    "brand": "Generic household cow's milk (assumed regular/full-fat)",
+    "basis": "As sold",
+    "kcal": 61,
+    "p": 3.2,
+    "c": 4.8,
+    "f": 3.3,
+    "fiber": 0,
+    "status": "Generic reference estimate",
+    "notes": "Assumed regular/full-fat household cow's milk; actual values vary by milk type.",
+    "keywords": [
+      "milk",
+      "cow milk",
+      "cow’s milk",
+      "cows milk",
+      "full fat milk",
+      "full-fat milk",
+      "regular milk",
+      "whole milk"
+    ],
+    "needsRecipe": false
   },
   {
     "name": "Plain curd",
-    "basis": "Per 100 g",
+    "brand": "Generic, unsweetened",
+    "basis": "As eaten",
     "kcal": 61,
     "p": 3.5,
     "c": 4.7,
     "f": 3.3,
     "fiber": 0,
-    "status": "Provisional estimate",
-    "notes": "Regular whole-milk curd."
+    "status": "Reference estimate",
+    "notes": "Fat depends on milk used.",
+    "keywords": [
+      "plain curd",
+      "curd",
+      "dahi",
+      "plain yogurt",
+      "plain yoghurt",
+      "unsweetened yogurt",
+      "unsweetened curd"
+    ],
+    "needsRecipe": false
   },
   {
     "name": "Poha",
-    "basis": "Cooked / 100 g",
-    "kcal": 130,
-    "p": 2.5,
-    "c": 25,
-    "f": 2.5,
-    "fiber": 1.5,
-    "status": "Provisional recipe estimate",
-    "notes": "Oil, peanuts, potatoes and water change values."
+    "brand": "Generic flattened rice",
+    "basis": "Dry",
+    "kcal": 350,
+    "p": 7,
+    "c": 77,
+    "f": 1,
+    "fiber": 3,
+    "status": "Reference estimate",
+    "notes": "Prepared dish depends on oil and additions.",
+    "keywords": [
+      "poha",
+      "flattened rice",
+      "beaten rice",
+      "chiwda"
+    ],
+    "needsRecipe": false
   },
   {
     "name": "Soya chunks",
-    "basis": "Dry / 100 g",
+    "brand": "Generic",
+    "basis": "Dry",
     "kcal": 345,
     "p": 52,
     "c": 33,
     "f": 0.5,
     "fiber": 13,
     "status": "Reference estimate",
-    "notes": "Generic; brand label preferred."
+    "notes": "Brand label preferred.",
+    "keywords": [
+      "soya chunks",
+      "soy chunks",
+      "soya",
+      "soy chunks dry",
+      "nutrela soya chunks"
+    ],
+    "needsRecipe": false
   },
   {
-    "name": "Yes Protein powder",
-    "basis": "As sold / 100 g",
-    "kcal": 399.5,
-    "p": 68.69,
-    "c": 18.81,
-    "f": 5.5,
-    "fiber": 5.51,
-    "status": "Label-derived",
-    "notes": "Latest user-provided label, per 100 g column. Per 35 g serving: 139.83 kcal, protein 24.04 g, carbs 6.58 g, fat 1.93 g, fibre 1.93 g."
-  },
-  {
-    "name": "Amul diced mozzarella",
-    "basis": "As sold / 100 g",
-    "kcal": 289,
-    "p": 23,
-    "c": 2,
-    "f": 21,
-    "fiber": null,
-    "status": "Label-derived",
-    "notes": "User-provided label; fiber not listed."
-  },
-  {
-    "name": "Pomegranate arils",
-    "basis": "Edible / 100 g",
+    "name": "Pomegranate",
+    "brand": "Generic",
+    "basis": "Raw arils",
     "kcal": 83,
     "p": 1.7,
     "c": 18.7,
     "f": 1.2,
     "fiber": 4,
     "status": "Reference estimate",
-    "notes": null
+    "notes": "Edible arils.",
+    "keywords": [
+      "pomegranate",
+      "pomegranate arils",
+      "anar",
+      "anar dana"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Mango",
+    "brand": "Generic",
+    "basis": "Raw edible portion",
+    "kcal": 60,
+    "p": 0.8,
+    "c": 15,
+    "f": 0.4,
+    "fiber": 1.6,
+    "status": "Reference estimate",
+    "notes": "Variety/ripeness vary.",
+    "keywords": [
+      "mango",
+      "mangoes",
+      "aam"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Mosambi",
+    "brand": "Generic",
+    "basis": "Raw edible portion",
+    "kcal": 43,
+    "p": 0.8,
+    "c": 9.3,
+    "f": 0.3,
+    "fiber": 2.8,
+    "status": "Reference estimate",
+    "notes": "Edible portion.",
+    "keywords": [
+      "mosambi",
+      "sweet lime",
+      "sweet lime fruit",
+      "mausambi"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Persimmon",
+    "brand": "Generic",
+    "basis": "Raw edible portion",
+    "kcal": 70,
+    "p": 0.6,
+    "c": 18.6,
+    "f": 0.2,
+    "fiber": 3.6,
+    "status": "Reference estimate",
+    "notes": "Variety/ripeness vary.",
+    "keywords": [
+      "persimmon",
+      "persimmons",
+      "japanese persimmon"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Peanuts",
+    "brand": "Generic",
+    "basis": "Raw",
+    "kcal": 567,
+    "p": 25.8,
+    "c": 16.1,
+    "f": 49.2,
+    "fiber": 8.5,
+    "status": "Reference estimate",
+    "notes": null,
+    "keywords": [
+      "peanuts",
+      "peanut",
+      "groundnuts",
+      "groundnut",
+      "moongphali",
+      "mungfali"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Coffee, black",
+    "brand": "Generic",
+    "basis": "Brewed, unsweetened",
+    "kcal": 1,
+    "p": 0.1,
+    "c": 0,
+    "f": 0,
+    "fiber": 0,
+    "status": "Reference estimate",
+    "notes": "Add milk/sugar separately.",
+    "keywords": [
+      "black coffee",
+      "black coffee unsweetened",
+      "coffee black",
+      "plain black coffee",
+      "coffee"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Green tea",
+    "brand": "Generic",
+    "basis": "Brewed, unsweetened",
+    "kcal": 1,
+    "p": 0,
+    "c": 0.2,
+    "f": 0,
+    "fiber": 0,
+    "status": "Reference estimate",
+    "notes": "Additions logged separately.",
+    "keywords": [
+      "green tea",
+      "plain green tea",
+      "unsweetened green tea"
+    ],
+    "needsRecipe": false
+  },
+  {
+    "name": "Chicken tikka masala",
+    "brand": "Recipe/restaurant dependent",
+    "basis": "Cooked dish",
+    "kcal": null,
+    "p": null,
+    "c": null,
+    "f": null,
+    "fiber": null,
+    "status": "Needs recipe",
+    "notes": "No fixed exact value without recipe.",
+    "keywords": [
+      "chicken tikka masala",
+      "tikka masala chicken",
+      "chicken tikka gravy"
+    ],
+    "needsRecipe": true
+  },
+  {
+    "name": "Homemade protein cake",
+    "brand": "Recipe dependent",
+    "basis": "Finished product",
+    "kcal": null,
+    "p": null,
+    "c": null,
+    "f": null,
+    "fiber": null,
+    "status": "Needs recipe",
+    "notes": "Calculate from ingredients and finished weight.",
+    "keywords": [
+      "homemade protein cake",
+      "protein cake",
+      "homemade cake",
+      "protein powder cake"
+    ],
+    "needsRecipe": true
   }
 ]
